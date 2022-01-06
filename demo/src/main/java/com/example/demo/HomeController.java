@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
+import org.apache.jena.datatypes.xsd.XSDDatatype;
 import org.apache.jena.query.Dataset;
 import org.apache.jena.query.DatasetFactory;
 import org.apache.jena.query.Query;
@@ -50,6 +51,7 @@ import java.io.Writer;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -111,7 +113,7 @@ public class HomeController {
             Model modelTemperature = ModelFactory.createDefaultModel();
             Model modelBaseTemperature = ModelFactory.createDefaultModel();
             String urlFinal;
-            String datasetURL = "http://localhost:3030/dataset10";
+            String datasetURL = "http://localhost:3030/dataset15";
             String sparqlEndpoint = datasetURL + "/sparql";
             String sparqlUpdate = datasetURL + "/update";
             String graphStore = datasetURL + "/data";
@@ -148,24 +150,21 @@ public class HomeController {
 
                     Elements columns = row.select("td");
                     if(row.text().startsWith("23 h")){
-                        String sDate1="16.11.2021 23:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 23:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
 
-                                convertDate("16.11.2021 arr[5]:00:00.0000000");
                                 
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))
-                                        
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))                                         
                                         );
                                         table[23]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
 
@@ -176,459 +175,434 @@ public class HomeController {
 
                     }
                     if(row.text().startsWith("22 h")){
-                        String sDate1="16.11.2021 22:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 22:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
-                                        );
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
+                                                                                  );
                                         table[22]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
                                         retourColonneModel ="";
                     }
                     if(row.text().startsWith("21 h")){
-                        String sDate1="16.11.2021 21:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 21:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
-                                        );
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
+                                                                                 );
                                         table[21]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
                                         retourColonneModel ="";
                     }
                     if(row.text().startsWith("20 h")){
-                        String sDate1="16.11.2021 20:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 20:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
-                                        );
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
+                                                                                  );
                                         table[20]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
                                         retourColonneModel ="";
                     }
                     if(row.text().startsWith("19 h")){
-                        String sDate1="16.11.2021 19:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 19:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
-                                        );
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
+                                                                                  );
                                         table[19]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
                                         retourColonneModel ="";
                     }
                     if(row.text().startsWith("18 h")){
-                        String sDate1="16.11.2021 28:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 18:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
-                                        );
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
+                                                                                  );
                                         table[18]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
                                         retourColonneModel ="";
                     }
                     if(row.text().startsWith("17 h")){
-                        String sDate1="16.11.2021 17:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 17:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
-                                        );
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
+                                                                                  );
                                         table[17]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
                                         retourColonneModel ="";
                     }
                     if(row.text().startsWith("16 h")){
-                        String sDate1="16.11.2021 16:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 16:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
-                                        );
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
+                                                                                  );
                                         table[16]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
                                         retourColonneModel ="";
                     }
                     if(row.text().startsWith("15 h")){
-                        String sDate1="16.11.2021 15:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 15:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
-                                        );
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
+                                                                                  );
                                         table[15]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
                                         retourColonneModel ="";
                     }
                     if(row.text().startsWith("14 h")){
-                        String sDate1="16.11.2021 14:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 14:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
-                                        );
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
+                                                                                  );
                                         table[14]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
                                         retourColonneModel ="";
                     }
                     if(row.text().startsWith("13 h")){
-                        String sDate1="16.11.2021 13:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 13:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
-                                        );
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
+                                                                                  );
                                         table[13]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
                                         retourColonneModel ="";
                     }
                     if(row.text().startsWith("12 h")){
-                        String sDate1="16.11.2021 12:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 12:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
-                                        );
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
+                                                                                  );
                                         table[12]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
                                         retourColonneModel ="";
                     }
                     if(row.text().startsWith("11 h")){
-                        String sDate1="16.11.2021 11:00:00:0000000";   
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 11:00:00:00";   
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
-                                        );
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
+                                                                                  );
                                         table[11]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
                                         retourColonneModel ="";
                     }
                     if(row.text().startsWith("10 h")){
-                        String sDate1="16.11.2021 10:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 10:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
-                                        );
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
+                                                                                  );
                                         table[10]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
                                         retourColonneModel ="";
                     }
                     if(row.text().startsWith("9 h")){
-                        String sDate1="16.11.2021 09:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 09:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
-                                        );
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
+                                                                                  );
                                         table[9]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
                                         retourColonneModel ="";
                     }
                     if(row.text().startsWith("8 h")){
-                        String sDate1="16.11.2021 08:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 08:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
-                                        );
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
+                                                                                  );
                                         table[8]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
                                         retourColonneModel ="";
                     }
                     if(row.text().startsWith("7 h")){
-                        String sDate1="16.11.2021 07:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 07:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
-                                        );
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
+                                                                                  );
                                         table[7]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
                                         retourColonneModel ="";
                     }
                     if(row.text().startsWith("6 h")){
-                        String sDate1="16.11.2021 06:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 06:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
-                                        );
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime)) 
+                                                                                 );
                                         table[6]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
                                         retourColonneModel ="";
                     }
                     if(row.text().startsWith("5 h")){
-                        String sDate1="16.11.2021 05:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 05:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
-                                        );
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
+                                                                                  );
                                         table[5]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
                                         retourColonneModel ="";
                     }
                     if(row.text().startsWith("4 h")){
-                        String sDate1="16.11.2021 04:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 04:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))                                        
                                         );
                                         table[4]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
                                         retourColonneModel ="";
                     }
                     if(row.text().startsWith("3 h")){
-                        String sDate1="16.11.2021 03:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 03:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
                                         );
                                         table[3]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
                                         retourColonneModel ="";
                     }
                     if(row.text().startsWith("2 h")){
-                        String sDate1="16.11.2021 02:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 02:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
-                                        );
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))                                           );
                                         table[2]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
                                         retourColonneModel ="";
                     }
                     if(row.text().startsWith("1 h")){
-                        String sDate1="16.11.2021 01:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 01:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
-                                        );
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))                                           );
                                         table[1]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
                                         retourColonneModel ="";
                     }if(row.text().startsWith("0 h")){
-                        String sDate1="16.11.2021 00:00:00:0000000";  
-                        Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSSSSS").parse(sDate1);  
+                        String sDate1="16-11-2021 00:00:00:00";  
+                        Date date1=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").parse(sDate1); 
                         Instant timestamp = date1.toInstant();
                         System.out.println("" + timestamp.getEpochSecond() + timestamp.getNano());
                         for (Element column:columns){
                             retourColonneModel = retourColonneModel + column.text() +"/";
-                            System.out.println("hello "+column.text());
                         }
                             arr = retourColonneModel.split("/");
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(timestamp.getEpochSecond() + timestamp.getNano())))                                        
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))                             
                                         );
                                         table[0]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
@@ -659,13 +633,15 @@ public class HomeController {
                             Long.valueOf(nextLine[1]);
                             long microseconds = Long.valueOf(nextLine[1]) / 1000;
                             long milliSeconds = microseconds / 1000;
-                            
+                            Timestamp time = new Timestamp(milliSeconds);
                             DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:MM:ss");
                             Calendar calendar = Calendar.getInstance();
+                            new Date(milliSeconds);
                             calendar.setTimeInMillis(milliSeconds);
                             formatter.format(calendar.getTime());
                             String test1 = ""+formatter.format(calendar.getTime());
-                            
+
+
                             if( Math.abs(Float.valueOf(table[Integer.parseInt(test1.substring(11, 13))]) - Float.valueOf(nextLine[7])) < 7 ){
                                 retourTemp="normal";
                             }
@@ -683,7 +659,7 @@ public class HomeController {
                                         .addProperty((ResourceFactory.createProperty(urldebut+arr[2].substring(1)+"ET"+"/"+arr[3].substring(1)+"/datalink")),
                                         modelSalle.createResource(urldebut+arr[2].substring(1)+"ET"+"/"+arr[3].substring(1)+"/datalink/data/"+i)
                                             .addProperty(ResourceFactory.createProperty(urldebut+arr[2].substring(1)+"ET"+"/"+arr[3].substring(1)+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(nextLine[7])))
-                                            .addProperty(ResourceFactory.createProperty(urldebut+arr[2].substring(1)+"ET"+"/"+arr[3].substring(1)+"/datalink/data/date"), ResourceFactory.createTypedLiteral(Long.valueOf(nextLine[1])))
+                                            .addProperty(ResourceFactory.createProperty(urldebut+arr[2].substring(1)+"ET"+"/"+arr[3].substring(1)+"/datalink/data/date"), ResourceFactory.createTypedLiteral(time.toInstant().toString(), XSDDatatype.XSDdateTime))
                                             .addProperty(ResourceFactory.createProperty(urldebut+arr[2].substring(1)+"ET"+"/"+arr[3].substring(1)+"/datalink/data/ext"), ResourceFactory.createTypedLiteral(Float.valueOf(table[Integer.parseInt(test1.substring(11, 13))])))
                                             .addProperty(ResourceFactory.createProperty(urldebut+arr[2].substring(1)+"ET"+"/"+arr[3].substring(1)+"/datalink/data/state"), ResourceFactory.createTypedLiteral(retourTemp))
                                             );
@@ -831,7 +807,7 @@ public class HomeController {
                 if(link.text().contains(".nt")){
                     Model model = ModelFactory.createDefaultModel();
                     model.read(url+link.text());
-                    String datasetURL = "http://localhost:3030/dataset10";
+                    String datasetURL = "http://localhost:3030/dataset15";
                     String sparqlEndpoint = datasetURL + "/sparql";
                     String sparqlUpdate = datasetURL + "/update";
                     String graphStore = datasetURL + "/data";
@@ -861,7 +837,7 @@ public class HomeController {
         //QueryExecution qExe = QueryExecutionFactory.sparqlService("http://localhost:3030/dataset/sparql", query );
     
         //ResultSet results1 = results.rewindable();
-        QueryEngineHTTP qexec = new QueryEngineHTTP("http://localhost:3030/dataset10/sparql", query );
+        QueryEngineHTTP qexec = new QueryEngineHTTP("http://localhost:3030/dataset15/sparql", query );
     
         ResultSet results = qexec.execSelect();  
         java.util.List result = ResultSetFormatter.toList(results);
@@ -885,8 +861,8 @@ public class HomeController {
             //System.out.println("hello retour ");
                 
                 if(result.get(j).toString().split(" ")[3].contains("date")){
-                    System.out.println("hello retour ici"+result.get(j).toString().split("=")[2].substring(0, result.get(j).toString().split("=")[2].length()-2)+" ");
-                    retour.add(" date : "+result.get(j).toString().split("=")[2].substring(2, result.get(j).toString().split("=")[2].length()-13)+" ");
+                    System.out.println("hello retour ici"+result.get(j).toString().split("=")[2]+" ");
+                    retour.add(" date : "+result.get(j).toString().split("=")[2].substring(0, result.get(j).toString().split("=")[2].length()-1)+" ");
                 }
                 else{
                     if(result.get(j).toString().split(" ")[3].contains("temp")){
