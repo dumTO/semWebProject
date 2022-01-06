@@ -113,7 +113,7 @@ public class HomeController {
             Model modelTemperature = ModelFactory.createDefaultModel();
             Model modelBaseTemperature = ModelFactory.createDefaultModel();
             String urlFinal;
-            String datasetURL = "http://localhost:3030/dataset16";
+            String datasetURL = "http://localhost:3030/dataset17";
             String sparqlEndpoint = datasetURL + "/sparql";
             String sparqlUpdate = datasetURL + "/update";
             String graphStore = datasetURL + "/data";
@@ -661,6 +661,7 @@ public class HomeController {
                                             .addProperty(ResourceFactory.createProperty(urldebut+arr[2].substring(1)+"ET"+"/"+arr[3].substring(1)+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(nextLine[7])))
                                             .addProperty(ResourceFactory.createProperty(urldebut+arr[2].substring(1)+"ET"+"/"+arr[3].substring(1)+"/datalink/data/date"), ResourceFactory.createTypedLiteral(time.toInstant().toString(), XSDDatatype.XSDdateTime))
                                             .addProperty(ResourceFactory.createProperty(urldebut+arr[2].substring(1)+"ET"+"/"+arr[3].substring(1)+"/datalink/data/state"), ResourceFactory.createTypedLiteral(retourTemp))
+                                            .addProperty(ResourceFactory.createProperty(urldebut+arr[2].substring(1)+"ET"+"/"+arr[3].substring(1)+"/datalink/data/id"), ResourceFactory.createTypedLiteral(nextLine[8]))
                                             );
                             
 
@@ -806,7 +807,7 @@ public class HomeController {
                 if(link.text().contains(".nt")){
                     Model model = ModelFactory.createDefaultModel();
                     model.read(url+link.text());
-                    String datasetURL = "http://localhost:3030/dataset16";
+                    String datasetURL = "http://localhost:3030/dataset17";
                     String sparqlEndpoint = datasetURL + "/sparql";
                     String sparqlUpdate = datasetURL + "/update";
                     String graphStore = datasetURL + "/data";
@@ -836,7 +837,7 @@ public class HomeController {
         //QueryExecution qExe = QueryExecutionFactory.sparqlService("http://localhost:3030/dataset/sparql", query );
     
         //ResultSet results1 = results.rewindable();
-        QueryEngineHTTP qexec = new QueryEngineHTTP("http://localhost:3030/dataset16/sparql", query );
+        QueryEngineHTTP qexec = new QueryEngineHTTP("http://localhost:3030/dataset17/sparql", query );
     
         ResultSet results = qexec.execSelect();  
         java.util.List result = ResultSetFormatter.toList(results);
