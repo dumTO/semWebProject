@@ -113,7 +113,7 @@ public class HomeController {
             Model modelTemperature = ModelFactory.createDefaultModel();
             Model modelBaseTemperature = ModelFactory.createDefaultModel();
             String urlFinal;
-            String datasetURL = "http://localhost:3030/dataset15";
+            String datasetURL = "http://localhost:3030/dataset16";
             String sparqlEndpoint = datasetURL + "/sparql";
             String sparqlUpdate = datasetURL + "/update";
             String graphStore = datasetURL + "/data";
@@ -163,7 +163,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))                                         
                                         );
                                         table[23]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
@@ -186,7 +186,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
                                                                                   );
                                         table[22]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
@@ -205,7 +205,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
                                                                                  );
                                         table[21]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
@@ -224,7 +224,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
                                                                                   );
                                         table[20]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
@@ -243,7 +243,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
                                                                                   );
                                         table[19]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
@@ -262,7 +262,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
                                                                                   );
                                         table[18]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
@@ -281,7 +281,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
                                                                                   );
                                         table[17]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
@@ -300,7 +300,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
                                                                                   );
                                         table[16]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
@@ -319,7 +319,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
                                                                                   );
                                         table[15]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
@@ -338,7 +338,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
                                                                                   );
                                         table[14]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
@@ -357,7 +357,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
                                                                                   );
                                         table[13]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
@@ -376,7 +376,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
                                                                                   );
                                         table[12]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
@@ -395,7 +395,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
                                                                                   );
                                         table[11]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
@@ -414,7 +414,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
                                                                                   );
                                         table[10]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
@@ -433,7 +433,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
                                                                                   );
                                         table[9]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
@@ -452,7 +452,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
                                                                                   );
                                         table[8]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
@@ -471,7 +471,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
                                                                                   );
                                         table[7]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
@@ -490,7 +490,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime)) 
                                                                                  );
                                         table[6]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
@@ -509,7 +509,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
                                                                                   );
                                         table[5]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
@@ -528,7 +528,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))                                        
                                         );
                                         table[4]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
@@ -547,7 +547,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))
                                         );
                                         table[3]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
@@ -566,7 +566,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))                                           );
                                         table[2]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
@@ -584,7 +584,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))                                           );
                                         table[1]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
                                         i=i+1;
@@ -601,7 +601,7 @@ public class HomeController {
                                 modelTemperature.createResource(urldebut+"TemperatureExt")
                                     .addProperty((ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink")),
                                     modelTemperature.createResource(urldebut+"TemperatureExt"+"/datalink/data/"+i)
-                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(arr[5]))
+                                        .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(arr[5].substring(0,arr[5].length()-3))))
                                         .addProperty(ResourceFactory.createProperty(urldebut+"TemperatureExt"+"/datalink/data/date"), ResourceFactory.createTypedLiteral(timestamp.toString(), XSDDatatype.XSDdateTime))                             
                                         );
                                         table[0]=Float.parseFloat(arr[5].substring(0,arr[5].length()-3));
@@ -660,7 +660,6 @@ public class HomeController {
                                         modelSalle.createResource(urldebut+arr[2].substring(1)+"ET"+"/"+arr[3].substring(1)+"/datalink/data/"+i)
                                             .addProperty(ResourceFactory.createProperty(urldebut+arr[2].substring(1)+"ET"+"/"+arr[3].substring(1)+"/datalink/data/temp"), ResourceFactory.createTypedLiteral(Float.valueOf(nextLine[7])))
                                             .addProperty(ResourceFactory.createProperty(urldebut+arr[2].substring(1)+"ET"+"/"+arr[3].substring(1)+"/datalink/data/date"), ResourceFactory.createTypedLiteral(time.toInstant().toString(), XSDDatatype.XSDdateTime))
-                                            .addProperty(ResourceFactory.createProperty(urldebut+arr[2].substring(1)+"ET"+"/"+arr[3].substring(1)+"/datalink/data/ext"), ResourceFactory.createTypedLiteral(Float.valueOf(table[Integer.parseInt(test1.substring(11, 13))])))
                                             .addProperty(ResourceFactory.createProperty(urldebut+arr[2].substring(1)+"ET"+"/"+arr[3].substring(1)+"/datalink/data/state"), ResourceFactory.createTypedLiteral(retourTemp))
                                             );
                             
@@ -807,7 +806,7 @@ public class HomeController {
                 if(link.text().contains(".nt")){
                     Model model = ModelFactory.createDefaultModel();
                     model.read(url+link.text());
-                    String datasetURL = "http://localhost:3030/dataset15";
+                    String datasetURL = "http://localhost:3030/dataset16";
                     String sparqlEndpoint = datasetURL + "/sparql";
                     String sparqlUpdate = datasetURL + "/update";
                     String graphStore = datasetURL + "/data";
@@ -837,7 +836,7 @@ public class HomeController {
         //QueryExecution qExe = QueryExecutionFactory.sparqlService("http://localhost:3030/dataset/sparql", query );
     
         //ResultSet results1 = results.rewindable();
-        QueryEngineHTTP qexec = new QueryEngineHTTP("http://localhost:3030/dataset15/sparql", query );
+        QueryEngineHTTP qexec = new QueryEngineHTTP("http://localhost:3030/dataset16/sparql", query );
     
         ResultSet results = qexec.execSelect();  
         java.util.List result = ResultSetFormatter.toList(results);
